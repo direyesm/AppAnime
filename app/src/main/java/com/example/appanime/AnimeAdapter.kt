@@ -20,11 +20,13 @@ class AnimeAdapter(var mAnime: AnimeSet): RecyclerView.Adapter<AnimeAdapter.Anim
     }
 
 
-    inner class AnimeViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener{
+    inner class AnimeViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val imgAnime = itemView.imgAnime
         val txtAnime = itemView.txtName
-        override fun onClick(p0: View?) {
+        val algo = itemView.setOnClickListener {
+            mAnime.passAnimeSet(animeList[adapterPosition])
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimeViewHolder {

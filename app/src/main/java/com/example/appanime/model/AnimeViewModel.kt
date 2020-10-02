@@ -20,4 +20,8 @@ class AnimeViewModel(application: Application): AndroidViewModel(application) {
         return  animeRepository.mLiveData
     }
 
+    fun obtainTerrainByID(nombre: String): LiveData<AnimeEnti>{
+        return animeRepository.obtainTerrainByID(nombre)
+    }
+
 }

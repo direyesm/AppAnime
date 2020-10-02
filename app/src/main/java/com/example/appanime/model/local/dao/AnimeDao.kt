@@ -19,7 +19,7 @@ interface AnimeDao {
     fun getAllAnimeFromDB(): LiveData<List<AnimeEnti>>
 
     @Query("SELECT * FROM anime_table WHERE nombre =:nombre")
-    fun getBreedByID(nombre: String): LiveData<AnimeEnti>
+    fun getAnimeByID(nombre: String): LiveData<AnimeEnti>
 
 
 }
