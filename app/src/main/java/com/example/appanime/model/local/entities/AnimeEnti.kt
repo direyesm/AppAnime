@@ -6,5 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "Anime_table")
 data class AnimeEnti (@PrimaryKey val nombre: String,
-           val image: String
+                      val image: String,
+                      val web: String,
+                     val datestar: String,
+//                      val datefinish: String,
+                      val cantepi: Int
     )

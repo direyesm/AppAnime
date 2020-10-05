@@ -1,4 +1,4 @@
-package com.example.appanime.model.remote.pojo
+package com.example.appanime.model.remote.pojoAnime
 
 
 import com.google.gson.annotations.SerializedName

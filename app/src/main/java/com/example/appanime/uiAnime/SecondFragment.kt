@@ -1,4 +1,4 @@
-package com.example.appanime
+package com.example.appanime.uiAnime
 
 import android.os.Bundle
 import android.util.Log
@@ -6,12 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-import com.example.appanime.model.AnimeViewModel
+import com.example.appanime.R
+import com.example.appanime.model.vmAnime.AnimeViewModel
 import kotlinx.android.synthetic.main.fragment_second.*
 
 /**
@@ -46,6 +45,10 @@ class SecondFragment : Fragment() {
             mViewModel.obtainTerrainByID(mId).observe(viewLifecycleOwner, Observer {
                 Glide.with(view.context).load(it.image).centerCrop().into(imageView)
                 nametxt.text = it.nombre
+                btnUrl.text = it.web
+                dateStarTxt.text = it.datestar
+//                dateFiniTxt.text = it.datefinish
+                episodesTxt.text = it.cantepi.toString()
             })
         }
 

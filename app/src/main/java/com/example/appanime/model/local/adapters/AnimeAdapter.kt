@@ -1,4 +1,4 @@
-package com.example.appanime
+package com.example.appanime.model.local.adapters
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.appanime.R
 import com.example.appanime.model.local.entities.AnimeEnti
-import com.example.appanime.model.remote.pojo.Anime
 import kotlinx.android.synthetic.main.anime_item_list.view.*
 
 class AnimeAdapter(var mAnime: AnimeSet): RecyclerView.Adapter<AnimeAdapter.AnimeViewHolder>() {

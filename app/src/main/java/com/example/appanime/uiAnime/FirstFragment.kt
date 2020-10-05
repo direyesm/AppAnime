@@ -1,32 +1,26 @@
-package com.example.appanime
+package com.example.appanime.uiAnime
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.airbnb.lottie.LottieAnimationView
-import com.example.appanime.model.AnimeViewModel
+import com.example.appanime.model.local.adapters.AnimeAdapter
+import com.example.appanime.R
+import com.example.appanime.model.vmAnime.AnimeViewModel
 import com.example.appanime.model.local.entities.AnimeEnti
-import com.example.appanime.model.remote.pojo.Anime
-import kotlinx.android.synthetic.main.anime_item_list.*
 import kotlinx.android.synthetic.main.fragment_first.*
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment(),AnimeAdapter.AnimeSet {
+class FirstFragment : Fragment(), AnimeAdapter.AnimeSet {
 
     lateinit var mViedModel: AnimeViewModel
     lateinit var adapter: AnimeAdapter
@@ -50,7 +44,7 @@ class FirstFragment : Fragment(),AnimeAdapter.AnimeSet {
 
         val mRecyclerView = recyclerView
         mRecyclerView.adapter = adapter
-        mRecyclerView.layoutManager = LinearLayoutManager(context)
+        mRecyclerView.layoutManager = GridLayoutManager(context,3)
 
         mViedModel.exposeLiveDataFromDataBase().observe(viewLifecycleOwner, Observer {
             Log.d("VIEW", it.toString())

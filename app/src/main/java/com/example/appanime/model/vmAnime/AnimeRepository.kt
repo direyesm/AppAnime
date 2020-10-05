@@ -1,12 +1,12 @@
-package com.example.appanime.model
+package com.example.appanime.model.vmAnime
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.appanime.model.local.dao.AnimeDao
 import com.example.appanime.model.local.entities.AnimeEnti
 import com.example.appanime.model.remote.RetrofitClient
-import com.example.appanime.model.remote.pojo.Anime
-import com.example.appanime.model.remote.pojo.Top
+import com.example.appanime.model.remote.pojoAnime.Anime
+import com.example.appanime.model.remote.pojoAnime.Top
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -43,7 +43,8 @@ class AnimeRepository(private val animeDao: AnimeDao) {
     fun converter(listAnime: List<Top>): List<AnimeEnti>{
         var ani : MutableList<AnimeEnti> = mutableListOf<AnimeEnti>()
         listAnime.map {
-            ani.add(AnimeEnti(it.title, it.imageUrl))
+            ani.add(AnimeEnti(it.title, it.imageUrl, it.url, it.startDate,
+                it.episodes))
         }
         return ani
     }
