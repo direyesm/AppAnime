@@ -19,7 +19,7 @@ class AnimeRepository(private val animeDao: AnimeDao) {
     private val service = RetrofitClient.retrofitClient()
     val mLiveData = animeDao.getAllAnimeFromDB()
 
-    fun obtainTerrainByID(nombre: String): LiveData<AnimeEnti>{
+    fun obtainAnimeinByID(nombre: String): LiveData<AnimeEnti>{
         return animeDao.getAnimeByID(nombre)
     }
 

@@ -5,12 +5,15 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.appanime.model.local.dao.AnimeDao
+import com.example.appanime.model.local.dao.MangaDao
 import com.example.appanime.model.local.entities.AnimeEnti
+import com.example.appanime.model.local.entities.MangaEnti
 
-@Database(entities = [AnimeEnti::class], version = 1)
-abstract class AnimeRoomDatabase : RoomDatabase() {
+@Database(entities = [AnimeEnti::class, MangaEnti::class], version = 1)
+abstract class AnimeRoomDatabase : RoomDatabase(){
 
     abstract fun getAnimeDao(): AnimeDao
+    abstract fun getMangaDao(): MangaDao
 
     companion object{
         @Volatile

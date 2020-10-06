@@ -20,7 +20,7 @@ class AnimeViewModel(application: Application): AndroidViewModel(application) {
     }
 
     fun obtainTerrainByID(nombre: String): LiveData<AnimeEnti>{
-        return animeRepository.obtainTerrainByID(nombre)
+        return animeRepository.obtainAnimeinByID(nombre)
     }
 
 }

@@ -12,7 +12,7 @@ import com.example.appanime.model.local.entities.MangaEnti
 interface MangaDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAllManga(LisManga: List<MangaEnti>)
+    suspend fun insertAllManga(listManga: List<MangaEnti>)
 
     @Query("SELECT * FROM manga_tablet")
     fun getAllMangaFromDB(): LiveData<List<MangaEnti>>
