@@ -10,7 +10,7 @@ import com.example.appanime.R
 import com.example.appanime.model.local.entities.MangaEnti
 import kotlinx.android.synthetic.main.manga_item_list.view.*
 
-class MangaAdapter(var mManga: MangaEnti): RecyclerView.Adapter<MangaAdapter.MangaViewHolder>() {
+class MangaAdapter(var mManga: MangaSet): RecyclerView.Adapter<MangaAdapter.MangaViewHolder>() {
     private var mangaList = emptyList<MangaEnti>()
 
     fun uodateListManga(mDatalist: List<MangaEnti>){
@@ -22,6 +22,9 @@ class MangaAdapter(var mManga: MangaEnti): RecyclerView.Adapter<MangaAdapter.Man
     inner class MangaViewHolder(itemView:  View): RecyclerView.ViewHolder(itemView){
         val imgManga = itemView.imgManga
         val txtManga = itemView.txtname
+        val algo = itemView.setOnClickListener {
+            mManga.passMangaSet((mangaList[adapterPosition]))
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MangaViewHolder {
@@ -38,6 +41,6 @@ class MangaAdapter(var mManga: MangaEnti): RecyclerView.Adapter<MangaAdapter.Man
 
 
     interface  MangaSet{
-        fun passMangSet(mManga: MangaEnti)
+        fun passMangaSet(mManga: MangaEnti)
     }
 }

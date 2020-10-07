@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/start2">
 
     <fragment
         android:id="@+id/FirstFragment"
@@ -27,12 +27,31 @@
     </fragment>
     <fragment
         android:id="@+id/second2Fragment"
-        android:name="com.example.appanime.Second2Fragment"
+        android:name="com.example.appanime.uiManga.Second2Fragment"
         android:label="fragment_second2"
-        tools:layout="@layout/fragment_second2" />
+        tools:layout="@layout/fragment_second2" >
+        <action
+            android:id="@+id/action_second2Fragment_to_first2Fragment"
+            app:destination="@id/first2Fragment" />
+    </fragment>
     <fragment
         android:id="@+id/first2Fragment"
-        android:name="com.example.appanime.First2Fragment"
+        android:name="com.example.appanime.uiManga.First2Fragment"
         android:label="fragment_first2"
-        tools:layout="@layout/fragment_first2" />
+        tools:layout="@layout/fragment_first2" >
+        <action
+            android:id="@+id/action_first2Fragment_to_second2Fragment"
+            app:destination="@id/second2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/start2"
+        android:name="com.example.appanime.Start"
+        android:label="Start" >
+        <action
+            android:id="@+id/action_start2_to_first2Fragment"
+            app:destination="@id/first2Fragment" />
+        <action
+            android:id="@+id/action_start2_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
 </navigation>

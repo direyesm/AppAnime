@@ -9,6 +9,6 @@ data class AnimeEnti (@PrimaryKey val nombre: String,
                       val image: String,
                       val web: String,
                      val datestar: String,
-//                      val datefinish: String,
+                     val datefinish: String,
                       val cantepi: Int
     )

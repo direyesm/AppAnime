@@ -44,7 +44,7 @@ class AnimeRepository(private val animeDao: AnimeDao) {
         var ani : MutableList<AnimeEnti> = mutableListOf<AnimeEnti>()
         listAnime.map {
             ani.add(AnimeEnti(it.title, it.imageUrl, it.url, it.startDate,
-                it.episodes))
+                it.endDate, it.episodes))
         }
         return ani
     }

@@ -1,5 +1,7 @@
 package com.example.appanime.uiAnime
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -44,13 +46,20 @@ class SecondFragment : Fragment() {
         mId.let {
             mViewModel.obtainTerrainByID(mId).observe(viewLifecycleOwner, Observer {
                 Glide.with(view.context).load(it.image).centerCrop().into(imageView)
-                nametxt.text = it.nombre
-                btnUrl.text = it.web
+                mangatxt.text = it.nombre
+                btnUrl.text = null
                 dateStarTxt.text = it.datestar
-//                dateFiniTxt.text = it.datefinish
+                dateFiniTxt.text = it.datefinish
                 episodesTxt.text = it.cantepi.toString()
             })
         }
 
+        btnUrl.setOnClickListener {
+           val  intent = Intent (Intent.ACTION_VIEW)
+
+
+        }
+
     }
+
 }
