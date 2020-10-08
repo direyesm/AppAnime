@@ -1,5 +1,7 @@
 package com.example.appanime.uiManga
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -40,11 +42,24 @@ class Second2Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        var web: String = ""
+
         mId.let {
             mViewModel.obtainMangainByID(mId).observe(viewLifecycleOwner, Observer {
                 Glide.with(view.context).load(it.image).centerCrop().into(imageView)
                 mangatxt.text = it.nombre
+                mangaInicio.text = it.datestar
+                mangaFinal.text = it.datefinish
+                mangaVolu.text = it.episode.toString()
+                web = it.web
             })
+        }
+
+        btnManga.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW,
+                Uri.parse(web)
+            )
+            )
         }
     }
 }

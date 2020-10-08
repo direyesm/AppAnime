@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Top(
     @SerializedName("end_date")
-    val endDate: Any,
+    val endDate: String,
     @SerializedName("image_url")
     val imageUrl: String,
     @SerializedName("mal_id")
@@ -25,5 +25,5 @@ data class Top(
     @SerializedName("url")
     val url: String,
     @SerializedName("volumes")
-    val volumes: Any
+    val volumes: Int
 )

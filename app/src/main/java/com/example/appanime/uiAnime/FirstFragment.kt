@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appanime.model.local.adapters.AnimeAdapter
@@ -45,11 +46,14 @@ class FirstFragment : Fragment(), AnimeAdapter.AnimeSet {
         val mRecyclerView = recyclerView
         mRecyclerView.adapter = adapter
         mRecyclerView.layoutManager = GridLayoutManager(context,3)
+        mRecyclerView.addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
+        mRecyclerView.addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.HORIZONTAL))
 
         mViedModel.exposeLiveDataFromDataBase().observe(viewLifecycleOwner, Observer {
             Log.d("VIEW", it.toString())
             adapter.updateListAnime(it)
         })
+
 //        var like = false
 //        LikeImageView.setOnClickListener {
 //            like = likeAnimation(LikeImageView, R.raw.bandai_dokkan, like)

@@ -4,10 +4,10 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -33,8 +33,8 @@ class SecondFragment : Fragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_second, container, false)
@@ -43,21 +43,27 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        var web: String = ""
+
         mId.let {
             mViewModel.obtainTerrainByID(mId).observe(viewLifecycleOwner, Observer {
                 Glide.with(view.context).load(it.image).centerCrop().into(imageView)
                 mangatxt.text = it.nombre
-                btnUrl.text = null
+                //btnUrl.text = it.web
                 dateStarTxt.text = it.datestar
                 dateFiniTxt.text = it.datefinish
                 episodesTxt.text = it.cantepi.toString()
+                web = it.web
             })
         }
 
+
+
         btnUrl.setOnClickListener {
-           val  intent = Intent (Intent.ACTION_VIEW)
-
-
+            startActivity(Intent(Intent.ACTION_VIEW,
+                    Uri.parse(web)
+                )
+            )
         }
 
     }

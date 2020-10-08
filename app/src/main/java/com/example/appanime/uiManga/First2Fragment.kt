@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.appanime.R
 import com.example.appanime.model.local.adapters.MangaAdapter
@@ -45,6 +46,9 @@ class First2Fragment : Fragment(), MangaAdapter.MangaSet {
         val mRecyclerView = recyclerViewManga
         mRecyclerView.adapter = adapter
         mRecyclerView.layoutManager = GridLayoutManager(context,3)
+        mRecyclerView.addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
+        mRecyclerView.addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.HORIZONTAL))
+
 
         mViewModel.exposeLiDataFromDataBaseManga().observe(viewLifecycleOwner, Observer {
             adapter.uodateListManga(it)

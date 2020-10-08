@@ -5,6 +5,10 @@ import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "Manga_tablet")
-data class MangaEnti (@PrimaryKey val nombre: String,
-                      val image: String
+data class MangaEnti(@PrimaryKey val nombre: String,
+                     val image: String,
+                     val web: String,
+                     val datestar: String,
+                     val datefinish: String?,
+                     val episode: Int
 )

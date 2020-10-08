@@ -43,8 +43,9 @@ class MangaRepository(private val mangaDao: MangaDao) {
     fun MangaConverter(listManga: List<Top>): List<MangaEnti>{
         var man : MutableList<MangaEnti> = mutableListOf<MangaEnti>()
         listManga.map {
-            man.add(MangaEnti(it.title, it.imageUrl)
-            )
+            man.add(
+                MangaEnti(it.title, it.imageUrl, it.url, it.startDate,
+                it.endDate, it.volumes))
         }
         return man
     }
