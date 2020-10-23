@@ -12,7 +12,8 @@ class AnimeViewModel(application: Application): AndroidViewModel(application) {
     init {
         val animeDao = AnimeRoomDatabase.getDatabase(application).getAnimeDao()
         animeRepository = AnimeRepository(animeDao)
-        animeRepository.obtainDataInternet()
+       // animeRepository.obtainDataInternet()
+        animeRepository.getDataFromServer()
     }
 
     fun exposeLiveDataFromDataBase(): LiveData<List<AnimeEnti>>{

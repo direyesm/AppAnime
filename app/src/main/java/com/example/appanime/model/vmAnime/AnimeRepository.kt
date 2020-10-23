@@ -23,6 +23,7 @@ class AnimeRepository(private val animeDao: AnimeDao) {
         return animeDao.getAnimeByID(nombre)
     }
 
+    //Vieja Confiable
     fun obtainDataInternet(){
         service.getDataFromAni().enqueue(object : Callback<Anime>{
 
@@ -39,6 +40,26 @@ class AnimeRepository(private val animeDao: AnimeDao) {
             }
         })
     }
+
+
+    //Corutines
+    fun getDataFromServer() = CoroutineScope(Dispatchers.IO).launch {
+        val service = kotlin.runCatching { service.getDataFromAniCoru() }
+        service.onSuccess {
+            when(it.code()){
+                in 200..299 -> it.body()?.let {
+                    animeDao.insertAllAnime(converter(it.top))
+                }
+                in 300..599 -> Log.d("RESPONSE_300-", it.body().toString())
+                else -> Log.d("ERROR", it.errorBody().toString())
+            }
+            service.onFailure {
+                Log.e("ERROR", it.message.toString())
+            }
+        }
+    }
+
+
 
     fun converter(listAnime: List<Top>): List<AnimeEnti>{
         var ani : MutableList<AnimeEnti> = mutableListOf<AnimeEnti>()
